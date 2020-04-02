@@ -15,10 +15,14 @@ public class shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey("a"))
+        {
+            Speed += 0.05f;
+        }
+        if(Input.GetKeyUp("a"))
         {
             rb.velocity = new Vector3(0, 0, Speed);
-            
+
         }
     }
 
