@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shoot : MonoBehaviour
 {
-    public float Speed = 0;
+    private float Speed = 0;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class shoot : MonoBehaviour
         if(Input.GetKeyUp("a"))
         {
             rb.velocity = new Vector3(0, 0, Speed);
-
+            Speed = 0.0f;
         }
     }
 
