@@ -15,16 +15,30 @@ public class shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("a"))
+        if (Input.GetKeyDown("a"))
         {
-            Speed += 0.05f;
-        }
-        if(Input.GetKeyUp("a"))
-        {
-            rb.velocity = new Vector3(0, 0, Speed);
-            Speed = 0.0f;
+
+
+            if (Input.GetKey("a"))
+            {
+                Speed += 0.05f;
+            }
+            if (Input.GetKeyUp("a"))
+            {
+                rb.velocity = new Vector3(0, 0, Speed);
+                Speed = 0.0f;
+            }
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "chamber_wall")
+        {
+            Debug.Log("発射位置へ接触しました.");
+        }
+    }
+
 
 }
 
