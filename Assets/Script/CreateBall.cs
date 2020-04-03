@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreateBall : MonoBehaviour
 {
     private Vector3 CreateBallPoint;
+    private int n = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +16,14 @@ public class CreateBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             GameObject obj = (GameObject)Resources.Load("Prefab/Ball");
-
+            obj.name = ("Ball" + n);
             //Instantiate(obj, new Vector3(0.1f, 0.8f, -0.05f), Quaternion.identity);
             Instantiate(obj, CreateBallPoint, Quaternion.identity);
-
+            n++;
         }
+        
     }
 }
