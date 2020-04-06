@@ -8,36 +8,40 @@ public class shoot : MonoBehaviour
     //Rigidbody rb;
     bool chamber = false;
     GameObject cap;
+    private Vector3 Cap_point;
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
-        //Debug.Log(rb);
-        //cap = GameObject.Find("chamber_wall");
-        //cap = GetComponent<Superstructure>.Mainboard.Luncher.chamber_cap;
-        //Debug.Log = (superstructure);
         cap = GameObject.Find("chamber_cap");
         Debug.Log(cap.tag);
-        Debug.Log(cap.transform.position.x);
-        Debug.Log(cap.transform.position.y);
-        Debug.Log(cap.transform.position.z);
+        //Cap_point = new Vector3(cap.transform.localPosition.x, cap.transform.localPosition.y, cap.transform.localPosition.z);
+        //cap_point = cap.transform.localPosition;
+        Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
 
+        //Debug.Log(cap_point.x);
+        //Debug.Log(cap_point.y);
+        //Debug.Log(cap_point.z);
+        Debug.Log(Cap_point.ToString("F4"));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (chamber == true)
+
+        if (this.chamber == true)
         {
 
             if (Input.GetKey("a"))
             {
-                this.Speed += 1.0f;
-                Debug.Log("発射可能");
+                this.transform.position = Cap_point;
 
-            }
-            if (Input.GetKeyUp("a"))
+                this.Speed += 10.0f;
+                Debug.Log("発射可能");
+            Debug.Log(Cap_point.ToString("F4"));
+
+        }
+        if (Input.GetKeyUp("a"))
             {
                 //this.rb.velocity = new Vector3(0, 0, Speed);
                 //this.rb.AddForce(new Vector3(0, 0, 1) * this.Speed);
@@ -52,18 +56,15 @@ public class shoot : MonoBehaviour
         if (collision.gameObject.name == "chamber_wall")
         {
             Debug.Log("発射位置へ接触しました.");
-            //transform.position = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z);
+            //this.transform.position = new Vector3(Cap_point.transform.position.x, Cap_point.transform.position.y, Cap_point.transform.position.z);
+            //this.transform.position = Cap_point;
+            //Debug.Log(Cap_point.ToString("F4"));
+            //Debug.Log(this.transform.position.ToString("F4"));
+
             //Debug.Log("移動完了");
             if (chamber == false)
-            {
-                //transform.position = new Vector3(collision.gameObject.transform.position.x,
-                //    collision.gameObject.transform.position.y, collision.gameObject.transform.position.z + 0.1f);
-                transform.position = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.1f);
                 chamber = true;
             }
         }
     }
-
-
-}
 
