@@ -282,6 +282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Superstructure '
       objectReference: {fileID: 0}
+    - target: {fileID: 6166485325950050463, guid: fa716097469921c4894e4864e0dc5a11,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6166485326183104365, guid: fa716097469921c4894e4864e0dc5a11,
         type: 3}
       propertyPath: m_IsActive
@@ -462,7 +467,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 101.5
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -487,13 +492,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 15, z: -1}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!1001 &5203856575470049651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,17 +514,17 @@ PrefabInstance:
     - target: {fileID: 5203856574303792275, guid: 8f495a09f22fc1c4684b98b177af3488,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.213
+      value: -0.058
       objectReference: {fileID: 0}
     - target: {fileID: 5203856574303792275, guid: 8f495a09f22fc1c4684b98b177af3488,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.23
+      value: -2.366
       objectReference: {fileID: 0}
     - target: {fileID: 5203856574303792275, guid: 8f495a09f22fc1c4684b98b177af3488,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.958
+      value: -1.775
       objectReference: {fileID: 0}
     - target: {fileID: 5203856574303792275, guid: 8f495a09f22fc1c4684b98b177af3488,
         type: 3}
