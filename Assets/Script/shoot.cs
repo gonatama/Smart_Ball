@@ -15,7 +15,13 @@ public class shoot : MonoBehaviour
         //Debug.Log(rb);
         //cap = GameObject.Find("chamber_wall");
         //cap = GetComponent<Superstructure>.Mainboard.Luncher.chamber_cap;
-        //Debug.Log = (cap.transform.position.x);
+        //Debug.Log = (superstructure);
+        cap = GameObject.Find("chamber_cap");
+        Debug.Log(cap.tag);
+        Debug.Log(cap.transform.position.x);
+        Debug.Log(cap.transform.position.y);
+        Debug.Log(cap.transform.position.z);
+
 
     }
 
@@ -50,8 +56,9 @@ public class shoot : MonoBehaviour
             //Debug.Log("移動完了");
             if (chamber == false)
             {
-                transform.position = new Vector3(collision.gameObject.transform.position.x,
-                    collision.gameObject.transform.position.y, collision.gameObject.transform.position.z + 0.1f);
+                //transform.position = new Vector3(collision.gameObject.transform.position.x,
+                //    collision.gameObject.transform.position.y, collision.gameObject.transform.position.z + 0.1f);
+                transform.position = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.1f);
                 chamber = true;
             }
         }
