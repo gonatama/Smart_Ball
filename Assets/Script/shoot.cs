@@ -48,8 +48,12 @@ public class shoot : MonoBehaviour
             Debug.Log("発射位置へ接触しました.");
             //transform.position = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z);
             //Debug.Log("移動完了");
-            transform.position = new Vector3(0.0f, 3.0f, 0.0f);
-            chamber = true;
+            if (chamber == false)
+            {
+                transform.position = new Vector3(collision.gameObject.transform.position.x,
+                    collision.gameObject.transform.position.y, collision.gameObject.transform.position.z + 0.1f);
+                chamber = true;
+            }
         }
     }
 
