@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         BallCreateNum += 5;
+    
     }
 
     // Update is called once per frame
@@ -39,5 +40,11 @@ public class GameManager : MonoBehaviour
             obj.num +=  BallCreateNum;
             BallCreateNum = 0;
         }
+    }
+
+    public void SetCreateNum(int i)
+    {
+        BallCreateNum += i;
+        Debug.Log(BallCreateNum);
     }
 }
