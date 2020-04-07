@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class shoot : MonoBehaviour
 {
-    public float Speed = 0.0f;
+    [SerializeField] float Speed = 0.0f;
     private Rigidbody rb;
     bool chamber_in = false;
     //bool chamber_out = true;
     GameObject cap,obj;
-    private Vector3 Cap_point;
+    [SerializeField]private Vector3 Cap_point;
     private string BallName;
     // Start is called before the first frame update
     void Start()
