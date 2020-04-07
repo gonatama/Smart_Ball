@@ -17,8 +17,11 @@ public class CreateBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.B))
-        if(num > 0)
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            num += 5;
+        }
+            if (num > 0)
         {
             for (int i = 0; i < num; i++)
             {
