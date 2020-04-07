@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 358442505}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 358442503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c465f512565b6e142a4aa0264750991a, type: 3}
+  m_Script: {fileID: 11500000, guid: 538edd93f5947ef42b6673cd633b563d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BallCreateNum: 0
