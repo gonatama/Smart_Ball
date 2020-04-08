@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ReactionBlock : MonoBehaviour
 {
-    [SerializeField] public GameObject obj;
+
+    //[SerializeField] public GameObject obj;
     [SerializeField] private Detection anotherScript;
+    [SerializeField] private int Num;
     // Start is called before the first frame update
     void Start()
     {
-        obj = GameObject.Find("Ball_Detection");
+        //obj = GameObject.Find("Ball_Detection");
         anotherScript = GetComponentInParent<Detection>();
         
     }
@@ -26,12 +28,13 @@ public class ReactionBlock : MonoBehaviour
         {
             Debug.Log("通過しました。");
             Debug.Log(this.name);
+
             Destroy(collision.gameObject);
             anotherScript.CreateBall();
 
             //obj.CreateBall();
-
         }
+
     }
 
 }

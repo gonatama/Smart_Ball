@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
-    [SerializeField] const int i = 5;
+    [SerializeField] const int i = 0;
     [SerializeField] public bool create;
     [SerializeField] private GameObject obj;
+    [SerializeField] private int[] CreateNum;
     // Start is called before the first frame update
     void Start()
     {
-        obj = GameObject.Find("Detection");
+       
     }
 
     public void CreateBall()
@@ -29,6 +30,10 @@ public class Detection : MonoBehaviour
         }
 
     }
+    
+    public void GetNum(string name)
+    {
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,24 +48,24 @@ public class Detection : MonoBehaviour
         if (create == true)
         {
             GameManager.instance.SetCreateNum(i);
-            Debug.Log(i);
+            //Debug.Log(i);
             //create = false;
             CreateBall();
         }
     }
 
 
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "ball")
-        {
-            Debug.Log("通過しました。");
-            Debug.Log(this.name);
-            Destroy(collision.gameObject);
-            //obj.create = true;
-            CreateBall();
-            Debug.Log(create);
-        }
-    }
+    //void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.tag == "ball")
+    //    {
+    //        Debug.Log("通過しました。");
+    //        Debug.Log(this.name);
+    //        Destroy(collision.gameObject);
+    //        //obj.create = true;
+    //        CreateBall();
+    //        Debug.Log(create);
+    //    }
+    //}
 
 }
