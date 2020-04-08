@@ -13,10 +13,27 @@ public class Detection : MonoBehaviour
         obj = GameObject.Find("Detection");
     }
 
+    public void CreateBall()
+    {
+
+        if (create == false)
+        {
+            create = true;
+            Debug.Log("trueに切り替え");
+
+        }
+        else
+        {
+            create = false;
+            Debug.Log("falseに切り替え");
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(create);
+        //Debug.Log(create);
 
         //if (create == false)
         //{
@@ -27,9 +44,11 @@ public class Detection : MonoBehaviour
         {
             GameManager.instance.SetCreateNum(i);
             Debug.Log(i);
-            create = false;
+            //create = false;
+            CreateBall();
         }
     }
+
 
     void OnTriggerEnter(Collider collision)
     {
@@ -38,7 +57,8 @@ public class Detection : MonoBehaviour
             Debug.Log("通過しました。");
             Debug.Log(this.name);
             Destroy(collision.gameObject);
-            obj.create = true;
+            //obj.create = true;
+            CreateBall();
             Debug.Log(create);
         }
     }
