@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
-    [SerializeField] const int i = 0;
+    //[SerializeField] const int[] i;
     [SerializeField] public bool create;
     [SerializeField] private GameObject obj;
-    [SerializeField] private int[] CreateNum;
+    [SerializeField] public int Num1;  //int[] CreateNum
+    [SerializeField] private int Num;
     // Start is called before the first frame update
     void Start()
     {
-       
+        //Num1 = 5;
+        Debug.Log(Num1);
+        Debug.Log(GetInstanceID());
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (create == true)
+        {
+            
+            GameManager.instance.SetCreateNum(Num);
+            CreateBall();
+        }
+    }
+
+
 
     public void CreateBall()
     {
@@ -30,42 +46,12 @@ public class Detection : MonoBehaviour
         }
 
     }
-    
-    public void GetNum(string name)
+
+    public void GetNum(int num)
     {
+        Num = num;
+        Debug.Log(Num);
+        Debug.Log(num);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log(create);
-
-        //if (create == false)
-        //{
-        //    //Debug.Log("通過していません");
-        //    return;
-        //}
-        if (create == true)
-        {
-            GameManager.instance.SetCreateNum(i);
-            //Debug.Log(i);
-            //create = false;
-            CreateBall();
-        }
-    }
-
-
-    //void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.tag == "ball")
-    //    {
-    //        Debug.Log("通過しました。");
-    //        Debug.Log(this.name);
-    //        Destroy(collision.gameObject);
-    //        //obj.create = true;
-    //        CreateBall();
-    //        Debug.Log(create);
-    //    }
-    //}
 
 }
