@@ -24,8 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BallCreateNum += 5;
-    
+        BallCreateNum = 0;
     }
 
     // Update is called once per frame
@@ -35,9 +34,11 @@ public class GameManager : MonoBehaviour
 
         if (BallCreateNum > 0)
         {
+            Debug.Log(BallCreateNum);
             GameObject CreateBall = GameObject.Find("CreateBall");
             CreateBall obj = CreateBall.GetComponent<CreateBall>();
             obj.num +=  BallCreateNum;
+            Debug.Log(obj.num);
             BallCreateNum = 0;
         }
     }
@@ -47,4 +48,14 @@ public class GameManager : MonoBehaviour
         BallCreateNum += i;
         Debug.Log(BallCreateNum);
     }
+
+
+    //public static List<GameObject> GetAll(this GameObject obj)
+    //{
+    //    List<GameObject> allChildren = new List<GameObject>();
+    //    GetChildren(obj, ref allChildren);
+    //    return allChirderen;
+    //}
+
+
 }

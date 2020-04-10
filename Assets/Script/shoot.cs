@@ -15,18 +15,10 @@ public class shoot : MonoBehaviour
     void Start()
     {
         cap = GameObject.Find("chamber_cap");
-        Debug.Log(cap.tag);
         this.rb = GetComponent<Rigidbody>();
         this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
-        //Cap_point = new Vector3(cap.transform.localPosition.x, cap.transform.localPosition.y, cap.transform.localPosition.z);
-        //cap_point = cap.transform.localPosition;
         Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
-
-        //Debug.Log(cap_point.x);
-        //Debug.Log(cap_point.y);
-        //Debug.Log(cap_point.z);
-        //Debug.Log("生成されました。");
-        //Debug.Log(Cap_point.ToString("F4"));
+        this.gameObject.SetActive(false);
 
     }
 
@@ -51,6 +43,7 @@ public class shoot : MonoBehaviour
             }
             if (Input.GetKeyUp("a"))
             {
+               
                 this.transform.position = Cap_point;
                 this.chamber_in = false;
                 //this.rb.velocity = new Vector3(0, 0, Speed);
