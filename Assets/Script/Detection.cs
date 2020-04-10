@@ -9,11 +9,15 @@ public class Detection : MonoBehaviour
     [SerializeField] private GameObject obj;
     [SerializeField] public int Num1;  //int[] CreateNum
     [SerializeField] private int Num;
+    public int[] NumList;
+    
     // Start is called before the first frame update
     void Start()
     {
-        //Num1 = 5;
-        Debug.Log(Num1);
+        //Num1 = 0;
+
+        NumList = new int[] { 0, 5, 15 };
+        Debug.Log(NumList[1]);
         Debug.Log(GetInstanceID());
     }
 
@@ -24,6 +28,7 @@ public class Detection : MonoBehaviour
         {
             
             GameManager.instance.SetCreateNum(Num);
+            //GameManager.instance.SetCreateNum(NumList[1]);
             CreateBall();
         }
     }
