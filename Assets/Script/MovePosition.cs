@@ -23,14 +23,5 @@ public class MovePosition : MonoBehaviour
         }
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.name == "Ball")
-    //    {
-    //        Debug.Log("発射位置へ接触しました.");
-    //        collision.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-    //        //this.chamber = true;
-    //    }
-    //}
 
 }
