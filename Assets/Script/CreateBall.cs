@@ -8,7 +8,7 @@ public class CreateBall : MonoBehaviour
     //[SerializeField] private int n = 0;
     //private int StartNum;
     public int num = 0;
-    private int cnt = 0;
+    [SerializeField] private int cnt = 0;
     [SerializeField] private GameObject obj;
     private List<GameObject> BallList = new List<GameObject>();
     // Start is called before the first frame update
@@ -34,25 +34,32 @@ public class CreateBall : MonoBehaviour
         }
         if (num > 0)
         {
+            int localcnt = 0;
+            localcnt = cnt + num;
+
+            if (localcnt > 300)
+            {
+                cnt = 0;
+            }
+
+
             for (int i = 0; i < num; i++)
             {
-                //if(cnt<300)
-                //{
-                //    cnt = 0;
-                //}
                 Debug.Log(cnt);
-                
-               GameObject obj = BallList[cnt + i];
+                BallActive(cnt + i);
+                GameObject obj = BallList[cnt + i];
                 if (obj.activeSelf == false)
                 {
                     obj.SetActive(true);
                     obj.transform.position = CreateBallPoint;
                 }
                 else
+                {
                     i--;
+                    cnt++;
+                }
             }
             cnt += num;
-            
             num = 0;
         }
         else
@@ -62,5 +69,19 @@ public class CreateBall : MonoBehaviour
     }
 
 
+
+    void BallActive(int num)
+    {
+        GameObject obj = BallList[num];
+
+        if (obj.activeSelf == false)
+        {
+            Debug.Log("false");
+        }
+        else if(obj.activeSelf == true)
+        {
+            Debug.Log("true");
+        }
+    }
     
 }
