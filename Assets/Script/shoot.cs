@@ -11,6 +11,7 @@ public class shoot : MonoBehaviour
     GameObject cap,obj;
     [SerializeField]private Vector3 Cap_point;
     private string BallName;
+    public Material[] _material;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class shoot : MonoBehaviour
         
         if (this.chamber_in == true)
         {
+            ChangeMaterial(this.chamber_in);
             //chamber_out = fasle;
             if (Input.GetKey("a"))
             {
@@ -67,5 +69,18 @@ public class shoot : MonoBehaviour
 
         }
 
+    }
+
+    void ChangeMaterial(bool i)
+    {
+        if(i == true)
+        {
+            this.GetComponent<Renderer>().sharedMaterial = _material[1];
+        }
+        else if(i == false)
+        {
+            this.GetComponent<Renderer>().sharedMaterial = _material[0];
+
+        }
     }
 }
