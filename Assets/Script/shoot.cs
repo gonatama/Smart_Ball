@@ -13,7 +13,7 @@ public class shoot : MonoBehaviour
     private string BallName;
     public Material[] _material;
 
-    [SerializeField] private int i;
+    public int i;
     // Start is called before the first frame update
     void Start()
     {
