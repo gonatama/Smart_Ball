@@ -29,7 +29,7 @@ public class shoot : MonoBehaviour
         
         if (this.chamber_in == true)
         {
-            ChangeMaterial(this.chamber_in);
+            //ChangeMaterial(this.chamber_in);
             //chamber_out = fasle;
             if (Input.GetKey("a"))
             {
@@ -71,16 +71,16 @@ public class shoot : MonoBehaviour
 
     }
 
-    void ChangeMaterial(bool i)
-    {
-        if(i == true)
-        {
-            this.GetComponent<Renderer>().sharedMaterial = _material[1];
-        }
-        else if(i == false)
-        {
-            this.GetComponent<Renderer>().sharedMaterial = _material[0];
+    //void ChangeMaterial(bool i)
+    //{
+    //    if(i == true)
+    //    {
+    //        this.GetComponent<Renderer>().sharedMaterial = _material[1];
+    //    }
+    //    else if(i == false)
+    //    {
+    //        this.GetComponent<Renderer>().sharedMaterial = _material[0];
 
-        }
-    }
+    //    }
+    //}
 }
