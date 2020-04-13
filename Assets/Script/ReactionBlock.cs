@@ -54,7 +54,10 @@ public class ReactionBlock : MonoBehaviour
             Debug.Log("通過しました。");
             Debug.Log(this.name);
 
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            //shoot shoot = collision.gameObject.GetComponent<shoot>();
+            //shoot.ReinitializationBall(collision.gameObject.name);
             Script.CreateBall();
             Script.GetNum(this.Num);
             //obj.CreateBall();

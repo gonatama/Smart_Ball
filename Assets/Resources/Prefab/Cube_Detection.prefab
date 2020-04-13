@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8246834810149966315}
   m_Layer: 0
   m_Name: Cube_Detection
-  m_TagString: Untagged
+  m_TagString: Detection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,4 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c7a7d5b3429d249ad7c70179f7d2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 0}
+  obj: {fileID: 0}
+  Script: {fileID: 0}
+  Num: 0

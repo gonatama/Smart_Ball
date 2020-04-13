@@ -12,12 +12,14 @@ public class shoot : MonoBehaviour
     [SerializeField]private Vector3 Cap_point;
     private string BallName;
     public Material[] _material;
+
+    [SerializeField] private int i;
     // Start is called before the first frame update
     void Start()
     {
         cap = GameObject.Find("chamber_cap");
         this.rb = GetComponent<Rigidbody>();
-        this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
+        //this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
         Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
         this.gameObject.SetActive(false);
 
@@ -29,18 +31,19 @@ public class shoot : MonoBehaviour
         
         if (this.chamber_in == true)
         {
-            //ChangeMaterial(this.chamber_in);
+            this.i = 1;
             //chamber_out = fasle;
             if (Input.GetKey("a"))
             {
+                Debug.Log(this.i);
+                //ChangeMaterial(i);
+                this.GetComponent<Renderer>().material = _material[i];
 
                 this.Speed += 5.0f;
                 if(this.Speed >= 500.0f)
                 {
                     this.Speed = 500.0f;
                 }
-                //Debug.Log("発射可能");
-                //Debug.Log(Cap_point.ToString("F4"));
 
             }
             if (Input.GetKeyUp("a"))
@@ -71,16 +74,24 @@ public class shoot : MonoBehaviour
 
     }
 
-    //void ChangeMaterial(bool i)
+    public void ReinitializationBall(string name)
+    {
+        Debug.Log("呼ばれました。");
+    }
+    //void OnTriggerEnter(Collider collider)
     //{
-    //    if(i == true)
+    //    if (collider.gameObject.tag == "Detection")
     //    {
-    //        this.GetComponent<Renderer>().sharedMaterial = _material[1];
-    //    }
-    //    else if(i == false)
-    //    {
-    //        this.GetComponent<Renderer>().sharedMaterial = _material[0];
+    //        Debug.Log(collider.gameObject.tag);
+    //        Debug.Log("通過しました");
+    //        Destroy(this.obj);
+    //        //this.obj.SetActive(false);
 
     //    }
+    //}
+    //void ChangeMaterial(int i)
+    //{
+
+    //        this.GetComponent<Renderer>().material = _material[i];
     //}
 }

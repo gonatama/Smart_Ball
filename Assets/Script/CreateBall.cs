@@ -36,10 +36,18 @@ public class CreateBall : MonoBehaviour
         {
             for (int i = 0; i < num; i++)
             {
+                //if(cnt<300)
+                //{
+                //    cnt = 0;
+                //}
                 Debug.Log(cnt);
+                
                GameObject obj = BallList[cnt + i];
                 if (obj.activeSelf == false)
+                {
                     obj.SetActive(true);
+                    obj.transform.position = CreateBallPoint;
+                }
                 else
                     i--;
             }
