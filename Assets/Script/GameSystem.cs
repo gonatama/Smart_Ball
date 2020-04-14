@@ -21,4 +21,14 @@ public class GameSystem : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void TitleMove()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void GameOverMove()
+    {
+        SceneManager.LoadScene("End");
+    }
 }
