@@ -89,7 +89,7 @@ public class CreateBall : MonoBehaviour
                     if (obj.activeSelf == false)
                 {
                         obj.SetActive(true);
-                        obj.transform.position = CreateBallPoint;
+                        obj.transform.position = new Vector3(CreateBallPoint.x + ((float)i%15 / 10), CreateBallPoint.y, CreateBallPoint.z);
                     //obj.GetComponent<Renderer>().material = obj._material[0];
                         obj.GetComponent<shoot>().ChangeMaterial(0);
                 }
@@ -110,7 +110,7 @@ public class CreateBall : MonoBehaviour
 
 
 
-    int BallActive()
+    public int BallActive()
     {
         foreach (Transform child in transform)
         {
