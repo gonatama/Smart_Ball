@@ -24,6 +24,6 @@ public class BallCount : MonoBehaviour
             Debug.Log(count);
             count = 300 - count;
             Debug.Log(count);
-            Count.text = "ボール数\n" + count.ToString();
+            Count.text = /*"ボール数\n" +*/ count.ToString();
     }
 }
