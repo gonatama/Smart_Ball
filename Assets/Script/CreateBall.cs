@@ -87,13 +87,13 @@ public class CreateBall : MonoBehaviour
 
                 GameObject obj = BallList[cnt + i];
                     if (obj.activeSelf == false)
-                    {
+                {
                         obj.SetActive(true);
                         obj.transform.position = CreateBallPoint;
-
-                        
-                    }
-                    else
+                    //obj.GetComponent<Renderer>().material = obj._material[0];
+                        obj.GetComponent<shoot>().ChangeMaterial(0);
+                }
+                else
                     {
                         i--;
                         cnt++;
@@ -109,32 +109,6 @@ public class CreateBall : MonoBehaviour
 
 
 
-
-    //bool BallActive()
-    //{
-    //    foreach (Transform child in transform)
-    //    {
-    //        if (child.gameObject.activeSelf == true)
-    //        {
-    //            n++;
-    //            //Debug.Log(n);
-    //        }
-    //    }
-
-    //    if(n >= 299)
-    //    {
-    //        n = 0;
-    //        stop = true;
-    //        return false;
-
-    //    }
-    //    else
-    //    {
-    //        n = 0;
-    //        stop = false;
-    //        return true;
-    //    }
-    //}
 
     int BallActive()
     {

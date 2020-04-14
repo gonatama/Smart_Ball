@@ -22,6 +22,7 @@ public class shoot : MonoBehaviour
         //this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
         Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
         this.gameObject.SetActive(false);
+        //this.GetComponent<Renderer>().material = _material[0];
 
     }
 
@@ -54,8 +55,6 @@ public class shoot : MonoBehaviour
                 //this.rb.velocity = new Vector3(0, 0, Speed);
                 this.rb.AddForce(new Vector3(1, 0, 1) * this.Speed);
                 Debug.Log("発射！");
-                //Debug.Log(this.rb.velocity.magnitude);
-                //this.Speed = 0.0f;
             }
         }
     }
@@ -65,8 +64,6 @@ public class shoot : MonoBehaviour
         if (collision.gameObject.name == "chamber_wall")
         {
 
-            //Debug.Log("発射位置へ接触しました.");
-            //Debug.Log("移動完了");
             if (this.chamber_in == false)
                 this.chamber_in = true;
 
@@ -74,10 +71,6 @@ public class shoot : MonoBehaviour
 
     }
 
-    public void ReinitializationBall(string name)
-    {
-        Debug.Log("呼ばれました。");
-    }
     //void OnTriggerEnter(Collider collider)
     //{
     //    if (collider.gameObject.tag == "Detection")
@@ -89,9 +82,9 @@ public class shoot : MonoBehaviour
 
     //    }
     //}
-    //void ChangeMaterial(int i)
-    //{
+    public void ChangeMaterial(int i)
+    {
 
-    //        this.GetComponent<Renderer>().material = _material[i];
-    //}
+        this.GetComponent<Renderer>().material = _material[i];
+    }
 }
