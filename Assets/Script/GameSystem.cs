@@ -8,7 +8,10 @@ public class GameSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(PlayerPrefs.HasKey("SAVE"))
+        {
+            Debug.Log("SAVEデータは存在します。");
+        }
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class GameSystem : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
+        //BallCreateNum = 30;
     }
 
     public void TitleMove()
@@ -30,5 +34,6 @@ public class GameSystem : MonoBehaviour
     public void GameOverMove()
     {
         SceneManager.LoadScene("End");
+        
     }
 }

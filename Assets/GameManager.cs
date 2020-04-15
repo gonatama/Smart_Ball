@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int BallCreateNum = 0;
-    [SerializeField] bool transition;
+    public int BallCreateNum = 0;
+    [SerializeField] static bool transition;
     public static GameManager instance = null;
-    public static GameSystem system;
+    private static GameObject Ball;
+    private static CreateBall createBall;
+    [SerializeField] private static GameSystem system;
     private void Awake()
     {
         if (instance == null)
@@ -22,12 +25,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
-        BallCreateNum = 0;
         transition = false;
+        Ball = GameObject.Find("CreateBall");
+        createBall = Ball.GetComponent<CreateBall>();
+        Debug.Log(createBall.name);
+        Debug.Log(LoadData());
+        BallCreateNum = 0;
+
     }
 
     // Update is called once per frame
@@ -38,15 +45,26 @@ public class GameManager : MonoBehaviour
         if (BallCreateNum > 0)
         {
             Debug.Log(BallCreateNum);
-            GameObject CreateBall = GameObject.Find("CreateBall");
-            CreateBall obj = CreateBall.GetComponent<CreateBall>();
-            obj.num +=  BallCreateNum;
-            Debug.Log(obj.num);
+            createBall.num += BallCreateNum;
+            Debug.Log(createBall.num);
             BallCreateNum = 0;
         }
 
         if (transition == true)
             TransitionGame();
+
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+
+            int i = 300 - createBall.BallActive();
+            SaveData(i);
+            Debug.Log("セーブしました。");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            BallCreateNum = LoadData();
+        }
     }
 
     public void SetCreateNum(int i)
@@ -62,11 +80,26 @@ public class GameManager : MonoBehaviour
 
     private void TransitionGame()
     {
-        transition = false;
+
         GameObject GameSystem = GameObject.Find("Transition");
-        Debug.Log(GameSystem.name);
+
         system = GameSystem.GetComponent<GameSystem>();
         system.GameOverMove();
+        transition = false;
+
     }
 
+    private void SaveData(int save)
+    {
+
+        PlayerPrefs.SetInt("SAVEDATA", save);
+        PlayerPrefs.Save();
+    }
+
+    private int LoadData()
+    {
+        int i = PlayerPrefs.GetInt("SAVEDATA", 30);
+        return i;
+    }
 }
+

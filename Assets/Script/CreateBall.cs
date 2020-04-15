@@ -27,19 +27,21 @@ public class CreateBall : MonoBehaviour
             //Debug.Log(BallList.Length);
         }
 
-        num = 30;
+        //num = 30;
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.instance.SetTransitionFlag();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GameManager.instance.SetTransitionFlag();
+        //}
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
             BallDelete();
+            GameManager.instance.SetTransitionFlag();
+
         }
 
 
@@ -108,10 +110,6 @@ public class CreateBall : MonoBehaviour
             }
             num = 0;
         }//if(stop)の終わり
-        if(300 == BallActive())
-        {
-            GameManager.instance.SetTransitionFlag();
-        }
 
     }
 
