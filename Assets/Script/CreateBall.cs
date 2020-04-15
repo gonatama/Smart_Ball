@@ -12,7 +12,7 @@ public class CreateBall : MonoBehaviour
     [SerializeField] private GameObject obj;
     [SerializeField] private bool stop;
     private List<GameObject> BallList = new List<GameObject>();
-    private GameSystem system;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +34,10 @@ public class CreateBall : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject GameSystem = GameObject.Find("Transition");
-            system = GameSystem.GetComponent<GameSystem>();
-            system.GameOverMove();
+            GameManager.instance.SetTransitionFlag();
         }
-        
-        if(Input.GetKeyDown(KeyCode.Return))
+
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             BallDelete();
         }
@@ -47,16 +45,9 @@ public class CreateBall : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            num += 15;
+            num += 5;
         }
 
-        //if (BallActive() == false)
-        //{
-        //    Debug.Log("初期化条件を満たしました");
-        //    num = 0;
-        //    //cnt = 0;
-        //    return;
-        //}
 
         int j = BallActive();
         //n = 0;
@@ -66,13 +57,6 @@ public class CreateBall : MonoBehaviour
             stop = true;
             j = 0;
             num = 0;
-        }
-        else if (j == 300)
-        {
-            GameObject GameSystem = GameObject.Find("Transition");
-            GameSystem system = GameSystem.GetComponent<GameSystem>();
-            system.GameOverMove();
-
         }
         else
         {
@@ -119,14 +103,16 @@ public class CreateBall : MonoBehaviour
                     {
                         i--;
                         cnt++;
-                    Debug.Log(cnt);
                 }
 
             }
-                //cnt += num;
-
             num = 0;
+        }//if(stop)の終わり
+        if(300 == BallActive())
+        {
+            GameManager.instance.SetTransitionFlag();
         }
+
     }
 
 
@@ -143,7 +129,6 @@ public class CreateBall : MonoBehaviour
 
             }
         }
-        Debug.Log(n);
         return n;
     }
 
@@ -153,6 +138,5 @@ public class CreateBall : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-
     }
 }

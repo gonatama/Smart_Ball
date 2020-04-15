@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] int BallCreateNum = 0;
+    [SerializeField] bool transition;
     public static GameManager instance = null;
+    public static GameSystem system;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         BallCreateNum = 0;
+        transition = false;
     }
 
     // Update is called once per frame
@@ -41,6 +44,9 @@ public class GameManager : MonoBehaviour
             Debug.Log(obj.num);
             BallCreateNum = 0;
         }
+
+        if (transition == true)
+            TransitionGame();
     }
 
     public void SetCreateNum(int i)
@@ -49,13 +55,18 @@ public class GameManager : MonoBehaviour
         Debug.Log(BallCreateNum);
     }
 
+    public void SetTransitionFlag()
+    {
+        transition = true;
+    }
 
-    //public static List<GameObject> GetAll(this GameObject obj)
-    //{
-    //    List<GameObject> allChildren = new List<GameObject>();
-    //    GetChildren(obj, ref allChildren);
-    //    return allChirderen;
-    //}
-
+    private void TransitionGame()
+    {
+        transition = false;
+        GameObject GameSystem = GameObject.Find("Transition");
+        Debug.Log(GameSystem.name);
+        system = GameSystem.GetComponent<GameSystem>();
+        system.GameOverMove();
+    }
 
 }
