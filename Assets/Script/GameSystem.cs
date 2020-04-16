@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameSystem : MonoBehaviour
 {
+    static int StartNum = 30;
     // Start is called before the first frame update
     void Start()
     {
         if(PlayerPrefs.HasKey("SAVE"))
         {
-            Debug.Log("SAVEデータは存在します。");
+            //int i = PlayerPrefs.GetInt("SAVE", 0);
+            //Debug.Log(i);
+
         }
     }
 
@@ -23,7 +26,6 @@ public class GameSystem : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
-        //BallCreateNum = 30;
     }
 
     public void TitleMove()
