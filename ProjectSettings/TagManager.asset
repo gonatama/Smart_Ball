@@ -7,6 +7,8 @@ TagManager:
   - NonSfx
   - ball
   - cap
+  - Detection
+  - ManagerScene
   layers:
   - Default
   - TransparentFX
