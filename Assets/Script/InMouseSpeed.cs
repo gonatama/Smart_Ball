@@ -32,6 +32,9 @@ public class InMouseSpeed : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            MouseX = 0;
+            MouseY = 0;
+            MousePos = new Vector2(MouseX, MouseY);
             Debug.Log(MousePos);
 
         }
@@ -39,6 +42,8 @@ public class InMouseSpeed : MonoBehaviour
 
     public float SetMouseSpeed()
     {
-        return MousePos.y;
+        float speed = MousePos.y;
+        //Debug.Log(speed);
+        return speed;
     }
 }

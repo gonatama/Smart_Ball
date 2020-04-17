@@ -22,7 +22,7 @@ public class shoot : MonoBehaviour
         GetMouse = mouse.GetComponent<InMouseSpeed>();
         this.rb = GetComponent<Rigidbody>();
         //this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
-        Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
+        Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y + 0.04f, cap.transform.position.z + 0.1f);
         this.gameObject.SetActive(false);
         //this.GetComponent<Renderer>().material = _material[0];
 
@@ -43,25 +43,26 @@ public class shoot : MonoBehaviour
                 Debug.Log(this.i);
                 //ChangeMaterial(i);
 
-                this.Speed += 5.0f;
+                this.Speed += 4.0f;
             }
             else if (Input.GetMouseButton(0))
             {
-                this.Speed = (GetMouse.SetMouseSpeed() * (-10));
+                this.Speed += (GetMouse.SetMouseSpeed() * (-2));
             }
 
-            if (this.Speed >= 500.0f)
+            if (this.Speed >= 400.0f)
             {
 
-                this.Speed = 500.0f;
+                this.Speed = 400.0f;
             }
             else if (this.Speed < 0.0f)
             {
-                this.Speed = 50.0f;
+                this.Speed = 0.0f;
             }
             if ((Input.GetKeyUp("a")) || (Input.GetMouseButtonUp(0)))
             {
-               
+
+                Debug.Log(this.Speed);
                 this.transform.position = Cap_point;
                 this.chamber_in = false;
                 //this.rb.velocity = new Vector3(0, 0, Speed);
@@ -75,7 +76,7 @@ public class shoot : MonoBehaviour
     {
         if (collision.gameObject.name == "chamber_wall")
         {
-            this.Speed = 50.0f;
+            this.Speed = 2.0f;
             if (this.chamber_in == false)
                 this.chamber_in = true;
 
