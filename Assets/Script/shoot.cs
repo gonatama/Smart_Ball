@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class shoot : MonoBehaviour
 {
-    [SerializeField] float Speed = 0.0f;
+    [SerializeField] private float Speed;
     private Rigidbody rb;
     bool chamber_in = false;
     //bool chamber_out = true;
-    GameObject cap,obj;
+    GameObject cap,obj,mouse;
     [SerializeField]private Vector3 Cap_point;
     private string BallName;
     public Material[] _material;
-
+    private InMouseSpeed GetMouse;
     public int i;
     // Start is called before the first frame update
     void Start()
     {
         cap = GameObject.Find("chamber_cap");
+        mouse = GameObject.Find("MouseSpeed");
+        GetMouse = mouse.GetComponent<InMouseSpeed>();
         this.rb = GetComponent<Rigidbody>();
         //this.rb.AddForce(Vector3.back, ForceMode.VelocityChange);
         Cap_point = new Vector3(cap.transform.position.x, cap.transform.position.y, cap.transform.position.z + 0.2f);
@@ -33,21 +35,31 @@ public class shoot : MonoBehaviour
         if (this.chamber_in == true)
         {
             this.i = 1;
+            this.GetComponent<Renderer>().material = _material[i];
+
             //chamber_out = fasle;
             if (Input.GetKey("a"))
             {
                 Debug.Log(this.i);
                 //ChangeMaterial(i);
-                this.GetComponent<Renderer>().material = _material[i];
 
                 this.Speed += 5.0f;
-                if(this.Speed >= 500.0f)
-                {
-                    this.Speed = 500.0f;
-                }
-
             }
-            if (Input.GetKeyUp("a"))
+            else if (Input.GetMouseButton(0))
+            {
+                this.Speed = (GetMouse.SetMouseSpeed() * (-10));
+            }
+
+            if (this.Speed >= 500.0f)
+            {
+
+                this.Speed = 500.0f;
+            }
+            else if (this.Speed < 0.0f)
+            {
+                this.Speed = 50.0f;
+            }
+            if ((Input.GetKeyUp("a")) || (Input.GetMouseButtonUp(0)))
             {
                
                 this.transform.position = Cap_point;
@@ -63,7 +75,7 @@ public class shoot : MonoBehaviour
     {
         if (collision.gameObject.name == "chamber_wall")
         {
-
+            this.Speed = 50.0f;
             if (this.chamber_in == false)
                 this.chamber_in = true;
 
@@ -88,3 +100,4 @@ public class shoot : MonoBehaviour
         this.GetComponent<Renderer>().material = _material[i];
     }
 }
+
