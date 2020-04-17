@@ -18,7 +18,7 @@ public class Detection : MonoBehaviour
 
         NumList = new int[] { 0, 5, 15 };
         Debug.Log(NumList[1]);
-        Debug.Log(GetInstanceID());
+        //Debug.Log(GetInstanceID());
     }
 
     // Update is called once per frame
