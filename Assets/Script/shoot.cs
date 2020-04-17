@@ -14,6 +14,7 @@ public class shoot : MonoBehaviour
     public Material[] _material;
     private InMouseSpeed GetMouse;
     public int i;
+    [SerializeField] private static float MaxSpeed = 400.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,10 +51,10 @@ public class shoot : MonoBehaviour
                 this.Speed += (GetMouse.SetMouseSpeed() * (-2));
             }
 
-            if (this.Speed >= 400.0f)
+            if (this.Speed >= MaxSpeed)
             {
 
-                this.Speed = 400.0f;
+                this.Speed = MaxSpeed;
             }
             else if (this.Speed < 0.0f)
             {
@@ -62,7 +63,7 @@ public class shoot : MonoBehaviour
             if ((Input.GetKeyUp("a")) || (Input.GetMouseButtonUp(0)))
             {
 
-                Debug.Log(this.Speed);
+                //Debug.Log(this.Speed);
                 this.transform.position = Cap_point;
                 this.chamber_in = false;
                 //this.rb.velocity = new Vector3(0, 0, Speed);

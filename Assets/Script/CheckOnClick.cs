@@ -42,6 +42,7 @@ public class CheckOnClick : MonoBehaviour
         if(SceneSystem.btnCheck == true)
         {
             PlayerPrefs.DeleteKey("SAVEDATA");
+            PlayerPrefs.DeleteKey("SCORE");
         }
     }
 }

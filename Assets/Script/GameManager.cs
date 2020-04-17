@@ -54,18 +54,20 @@ public class GameManager : MonoBehaviour
         }
 
 
-
         if (BallCreateNum > 0)
         {
             Debug.Log(BallCreateNum);
             createBall.num += BallCreateNum;
             Debug.Log(createBall.num);
             BallCreateNum = 0;
+
         }
 
+        Score(300 - createBall.BallActive());
         if (transition == true)
+        {
             TransitionGame();
-
+        }
         if(Input.GetKeyDown(KeyCode.S))
         {
 
@@ -73,6 +75,7 @@ public class GameManager : MonoBehaviour
             SaveData(i);
             Debug.Log("セーブしました。");
         }
+
 
         //if (Input.GetKeyDown(KeyCode.D))
         //{
@@ -113,6 +116,14 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    private void Score(int score)
+    {
+
+        SceneSystem.Score = Mathf.Max(SceneSystem.Score, score);
+        PlayerPrefs.SetInt("SCORE", SceneSystem.Score);
+
+
+    }
     //private int LoadData()
     //{
     //    int i = PlayerPrefs.GetInt("SAVEDATA", 30);

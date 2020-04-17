@@ -14,6 +14,10 @@ public class SceneSystem : MonoBehaviour
     public static bool start = false;
     public static bool Continued = false;
     public static bool btnCheck = false;
+
+    public static int Score = 0;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -88,6 +92,18 @@ public class SceneSystem : MonoBehaviour
             Debug.Log("セーブデータがありません。");
         }
 
+
+        if (PlayerPrefs.HasKey("SCORE") == true)
+        {
+            Debug.Log(Score);
+            Score = PlayerPrefs.GetInt("SCORE", 0);
+            Debug.Log(Score);
+        }
+        else if(PlayerPrefs.HasKey("SCORE") == false)
+        {
+            Score = 0;
+            Debug.Log(Score);
+        }
     }
 
 }
