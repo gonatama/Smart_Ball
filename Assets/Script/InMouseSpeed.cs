@@ -23,7 +23,7 @@ public class InMouseSpeed : MonoBehaviour
         //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButton(0))
         {
-            MouseX += Input.GetAxis("Mouse Y");
+            MouseX += Input.GetAxis("Mouse X");
             MouseY += Input.GetAxis("Mouse Y");
             MousePos = new Vector2(MouseX, MouseY);
             Debug.Log(MousePos);
